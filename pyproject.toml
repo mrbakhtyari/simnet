@@ -1,0 +1,50 @@
+[project]
+name = "simnet-hgt"
+version = "0.1.0"
+description = "Scalable detection of horizontal gene transfer using similarity networks."
+readme = "README.md"
+authors = [{ name = "mrbakhtyari", email = "mrbakhtyari75@gmail.com" }]
+requires-python = ">=3.13"
+dependencies = [
+    "biopython>=1.85",
+    "matplotlib>=3.10.7",
+    "networkx>=3.5",
+    "openpyxl>=3.1.5",
+    "pandas>=2.3.3",
+    "python-dotenv>=1.1.1",
+    "scipy>=1.16.2",
+    "seaborn>=0.13.2",
+    "tqdm>=4.67.1",
+]
+
+
+[build-system]
+requires = ["uv_build>=0.8.13,<0.9.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.0.1",
+    "pre-commit>=4.3.0",
+    "pyright>=1.1.405",
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.13.0",
+]
+
+[tool.pyright]
+include = ["src"]
+pythonVersion = "3.13"
+typeCheckingMode = "standard"
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+lint.select = ["E", "F", "I", "UP", "B", "SIM", "PL", "RUF"]
+lint.ignore = ["E501"]
+format.quote-style = "double"
+format.indent-style = "space"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-ra -q --cov=simnet_hgt --cov-report=term-missing"
